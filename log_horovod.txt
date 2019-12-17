@@ -1,0 +1,6 @@
+[1,1]<stdout>:0
+[1,2]<stdout>:0
+[1,0]<stdout>:0
+[1,2]<stdout>:./horovod_log2.txt
+[1,0]<stdout>:./horovod_log0.txt
+[1,1]<stdout>:./horovod_log1.txt
