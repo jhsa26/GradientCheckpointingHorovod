@@ -8,7 +8,7 @@ Bert, Roberta, and Xlnet models are too large to be trained. They are often part
 from torch.utils.checkpoint import checkpoint_sequential,checkpoint
 ~~~
 
-There are some distributed training libraries such as `DataDistributedParallel` of Pytorch, `Apex` of Nvidia, and `Horovod` of Uber. Both `DataDistributedParallel` and `Apex` are not compatible with `checkpoint_sequential` associated with chunks larger than 1, which means that the computed local gradients are not synchronous for all ranks when performing Ring-allreduce operation. It suprised me. So far, we cannot fix this bug. We will show this bug by through a a comparison of `Horovod` and `Apex` over [a simple network](https://github.com/prigoyal/pytorch_memonger/tree/master/).
+There are some distributed training libraries such as `DataDistributedParallel` of Pytorch, `Apex` of Nvidia, and `Horovod` of Uber. **"Sometime both `DataDistributedParallel` and `Apex` are not compatible with `checkpoint_sequential` associated with chunks larger than 1, which means that the computed local gradients are not synchronous for all ranks when performing Ring-allreduce operation. It suprised me. So far, we cannot fix this bug**. We will show tests by through a a comparison of `Horovod` and `Apex` over [a simple network](https://github.com/prigoyal/pytorch_memonger/tree/master/).
 
 ## Notes about checkpoint_sequential 
 Please note that the `checkpoint_sequential` only works out in case of that the output of current layer is the input of next layer. You should make sure the number of elements in `forward` API is equal to the number of elements of `return` after some calculation.
@@ -31,18 +31,22 @@ Class balba(torch.nn.Module):
         return A
 ~~~
 
+## Environment
+
+```
+Pytorch 1.2
+Cuda 10.0
+NCCL 2.4
+```
 
 ## How to run
-You can use docker to run this test by 
 
-```bash
-bash run_docker_checkpoint_sequential.sh
+
+``` bash
+bash run_docker_checkpoint_sequential.sh # start docker run
+cd /projects/mtl     # enter /projects/mtl
+bash main_apex.sh    # test apex
+bash main_horovod.sh # test horovod
 ```
 
-or run it directly by
-
-```bash
-bash main.sh
-```
-
-You can modify `use_amp` in `./test_memory_optimized_horovod_apex_comparison.py` to use or not use `Apex`.
+Logfiles are in `logs` folder for each process.

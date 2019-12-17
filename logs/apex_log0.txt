@@ -1,0 +1,11 @@
+[2019-12-17 14:57:00,419 test_memory_optimized_horovod_apex_comparison.py:53] from CUDA_VISIBLE_DEVICES:[0]
+[2019-12-17 14:57:00,419 test_memory_optimized_horovod_apex_comparison.py:57] seed 20 local rank: 0; world size: 4
+[2019-12-17 14:57:00,753 test_memory_optimized_horovod_apex_comparison.py:68] inputs norm for rank 0 : 14609.5830078125
+[2019-12-17 14:57:00,753 test_memory_optimized_horovod_apex_comparison.py:70] run program 0
+[2019-12-17 14:57:07,316 test_memory_optimized_horovod_apex_comparison.py:79] apex sync
+[2019-12-17 14:57:07,328 test_memory_optimized_horovod_apex_comparison.py:94] local_rank 0   iteration 0
+[2019-12-17 14:57:16,115 test_memory_optimized_horovod_apex_comparison.py:98] local_rank 0   loss   6.918750762939453
+[2019-12-17 14:57:29,524 test_memory_optimized_horovod_apex_comparison.py:113] rank 0 parameter norm 796 7508.00634765625
+[2019-12-17 14:57:29,843 test_memory_optimized_horovod_apex_comparison.py:94] local_rank 0   iteration 1
+[2019-12-17 14:57:30,183 test_memory_optimized_horovod_apex_comparison.py:98] local_rank 0   loss   2.661738872528076
+[2019-12-17 14:57:30,849 test_memory_optimized_horovod_apex_comparison.py:113] rank 0 parameter norm 796 7508.0146484375

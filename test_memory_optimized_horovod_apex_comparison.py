@@ -24,9 +24,20 @@ if use_amp==0:
     hvd.init()
     local_rank = hvd.local_rank()
     device=hvd.local_rank()
+    
+    seed=local_rank%1234*100+20 #+np.random.randint(1000)
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
     logfile="./logs/horovod_log{}.txt".format(local_rank)
     logging.basicConfig(format='[%(asctime)s %(filename)s:%(lineno)s] %(message)s', level=logging.INFO,filename=logfile,filemode='w')
 if use_amp==1:
+    seed=local_rank%1234*100+20 #+np.random.randint(1000)
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
     print(local_rank)
     os.environ["MASTER_ADDR"]="127.0.0.1"
     os.environ["MASTER_PORT"]="10100"
@@ -43,11 +54,6 @@ if use_amp==1:
     device=device_ids[0]
 
 
-seed=local_rank%1234*100+20 #+np.random.randint(1000)
-random.seed(seed)
-np.random.seed(seed)
-torch.manual_seed(seed)
-torch.cuda.manual_seed_all(seed)
 logging.info(f"seed {seed} local rank: {local_rank}; world size: {world_size}")
 print(logfile)
 N = 32
@@ -90,8 +96,8 @@ if True:
                     output = model(input_var, chunks=chunks)
                     loss = criterion(output, target_var)
                     logging.info(f"local_rank {local_rank}   loss   {loss}")
-                    logging.info(f"local_rank {local_rank}   loss  requires_grad  {loss.requires_grad}")
-                    logging.info(f"local_rank {local_rank}   loss grad_fn  {loss.grad_fn}")
+                    #logging.info(f"local_rank {local_rank}   loss  requires_grad  {loss.requires_grad}")
+                    #logging.info(f"local_rank {local_rank}   loss grad_fn  {loss.grad_fn}")
                     optimizer.zero_grad()
                     if use_amp==1:
                         with amp.scale_loss(loss,optimizer,delay_unscale=False) as scaled_loss:
@@ -106,4 +112,4 @@ if True:
                             norm_total+=param.data.norm()
                     logging.info("rank {} parameter norm {} {}".format(local_rank,count_param,norm_total))
                     optimizer.step()
-                torch.cuda.synchronize()
+                #torch.cuda.synchronize()

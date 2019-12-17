@@ -1,0 +1,13 @@
+[2019-12-17 13:01:19,165 test_memory_optimized_horovod_apex_comparison.py:51] seed 220 local rank: 2; world size: 3
+[2019-12-17 13:01:19,273 test_memory_optimized_horovod_apex_comparison.py:62] inputs norm for rank 2 : 14585.4462890625
+[2019-12-17 13:01:19,273 test_memory_optimized_horovod_apex_comparison.py:64] run program 2
+[2019-12-17 13:01:26,147 test_memory_optimized_horovod_apex_comparison.py:88] local_rank 2   iteration 0
+[2019-12-17 13:01:34,893 test_memory_optimized_horovod_apex_comparison.py:92] local_rank 2   loss   6.917498588562012
+[2019-12-17 13:01:34,893 test_memory_optimized_horovod_apex_comparison.py:93] local_rank 2   loss  requires_grad  True
+[2019-12-17 13:01:34,893 test_memory_optimized_horovod_apex_comparison.py:94] local_rank 2   loss grad_fn  <NllLossBackward object at 0x7f85149da198>
+[2019-12-17 13:01:47,606 test_memory_optimized_horovod_apex_comparison.py:107] rank 2 parameter norm 796 7508.00048828125
+[2019-12-17 13:01:51,446 test_memory_optimized_horovod_apex_comparison.py:88] local_rank 2   iteration 1
+[2019-12-17 13:01:51,745 test_memory_optimized_horovod_apex_comparison.py:92] local_rank 2   loss   2.669142246246338
+[2019-12-17 13:01:51,745 test_memory_optimized_horovod_apex_comparison.py:93] local_rank 2   loss  requires_grad  True
+[2019-12-17 13:01:51,745 test_memory_optimized_horovod_apex_comparison.py:94] local_rank 2   loss grad_fn  <NllLossBackward object at 0x7f85149da320>
+[2019-12-17 13:01:52,460 test_memory_optimized_horovod_apex_comparison.py:107] rank 2 parameter norm 796 7507.9990234375

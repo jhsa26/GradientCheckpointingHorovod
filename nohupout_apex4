@@ -1,5 +1,5 @@
-2
-./logs/apex_log2.txt
+3
+./logs/apex_log3.txt
 Selected optimization level O0:  Pure FP32 training.
 
 Defaults for this optimization level are:
