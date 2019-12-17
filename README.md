@@ -16,18 +16,18 @@ Please note that the `checkpoint_sequential` only works out in case of that the 
 ~~~python
 Class balba(torch.nn.Module):
     balabalabala
-    def forward(self,A,B,C):
+    def forward(self, A, B, C):
         balabala
-        return A,B,C
+        return A, B, C
 ~~~
 
-If B,C don't require gradients, we let B and C as global variables. Then define your model like this
+If B, C don't require gradients, we let B and C as global variables. Then define your model like this
  
 ~~~python
 Class balba(torch.nn.Module):
     balabalabala
-    def forward(self,A):
-        some calculation in terms of B,C
+    def forward(self, A):
+        some calculation in terms of B, C
         return A
 ~~~
 
